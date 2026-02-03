@@ -1,19 +1,20 @@
 import { Routes, Route } from 'react-router';
+import { HomePage } from './pages/HomePage';
+import { CheckoutPage } from './pages/CheckoutPage';
+
 import './App.css'
-import { HomePage } from './Pages/HomePage'
 
 function App() {
 
   return (
     //all pages of the web-site  
-    <Routes>
-      {/* a page */} 
+    <Routes>  
       {/* path - at the url, element - the component to display -  */}
       {/* index means "/", main page */}
       <Route index element = {<HomePage />} />
-      <Route path = "checkout" element = {<div>Test checkout</div>} />
+      <Route path = "checkout" element = {<CheckoutPage />} />
       
-      </Routes>
+    </Routes>
     
   )
 }
