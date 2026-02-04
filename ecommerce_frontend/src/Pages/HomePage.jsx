@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Header } from '../components/Header';
 import './HomePage.css';
 import { products } from '../../starting-code/data/products';
@@ -6,14 +7,10 @@ export function HomePage() {
 
     //fetch data from the backend, then response is here, the function from then run 
     //fetch is async 
-    fetch('http://localhost:3000/api/products')
-    .then((response) => {
-        //json is async 
-        return response.json();
-        }).then((data) => {
-            console.log(data);
-        });
-
+    axios.get('http://localhost:3000/api/products')
+        .then((response) => {
+            console.log(response.data);
+            });
     return (
         <>
             <title> Ecommerce project </title>
