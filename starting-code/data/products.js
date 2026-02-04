@@ -4,7 +4,7 @@ export const products = [
     image: "/images/products/black-cat-with-orange-eyes-in-dunes.png",
     name: "Black Cat with Orange Eyes in Dunes",
     rating: { stars: 4.5, count: 0 },
-    priceCents: 0,
+    priceCents: 5,
     keywords: ["black cat", "orange eyes", "dunes"]
   },
   {
@@ -12,7 +12,7 @@ export const products = [
     image: "/images/products/black-cat-with-ornament-in-mandala-style.png",
     name: "Black Cat with Ornament in Mandala Style",
     rating: { stars: 4.5, count: 0 },
-    priceCents: 0,
+    priceCents: 5,
     keywords: ["black cat", "mandala", "ornament"]
   },
   {
@@ -20,7 +20,7 @@ export const products = [
     image: "/images/products/black-cat-with-pink-ears-wearing-glasses-surrounded-by-leaves-and-pink-flowers-on-dark-blue-background.png",
     name: "Black Cat with Pink Ears Wearing Glasses",
     rating: { stars: 4.5, count: 0 },
-    priceCents: 0,
+    priceCents: 5,
     keywords: ["black cat", "glasses", "flowers"]
   },
   {
@@ -28,7 +28,7 @@ export const products = [
     image: "/images/products/black-space-galaxy-cat.png",
     name: "Black Space Galaxy Cat",
     rating: { stars: 4.5, count: 0 },
-    priceCents: 0,
+    priceCents: 5,
     keywords: ["black cat", "space", "galaxy"]
   },
   {
@@ -36,7 +36,7 @@ export const products = [
     image: "/images/products/blue-and-white-happy-cat-with-pink-flowers.png",
     name: "Blue and White Happy Cat with Pink Flowers",
     rating: { stars: 4.5, count: 0 },
-    priceCents: 0,
+    priceCents: 5,
     keywords: ["blue cat", "white cat", "flowers"]
   },
   {
@@ -44,7 +44,7 @@ export const products = [
     image: "/images/products/blue-and-white-kitten-with-big-eyes-on-light-blue-background.png",
     name: "Blue and White Kitten with Big Eyes",
     rating: { stars: 4.5, count: 0 },
-    priceCents: 0,
+    priceCents: 5,
     keywords: ["kitten", "big eyes", "cute"]
   },
   {
@@ -52,7 +52,7 @@ export const products = [
     image: "/images/products/brown-and-white-cartoon-cat-with-black-eyes.png",
     name: "Brown and White Cartoon Cat with Black Eyes",
     rating: { stars: 4.5, count: 0 },
-    priceCents: 0,
+    priceCents: 5,
     keywords: ["cartoon cat", "brown", "white"]
   },
   {
@@ -60,7 +60,7 @@ export const products = [
     image: "/images/products/calm-orange-and-white-cartoon-kitten.png",
     name: "Calm Orange and White Cartoon Kitten",
     rating: { stars: 4.5, count: 0 },
-    priceCents: 0,
+    priceCents: 5,
     keywords: ["kitten", "orange", "calm"]
   },
   {
@@ -68,7 +68,7 @@ export const products = [
     image: "/images/products/cheeky-white-kitten-in-sunglasses.png",
     name: "Cheeky White Kitten in Sunglasses",
     rating: { stars: 4.5, count: 0 },
-    priceCents: 0,
+    priceCents: 5,
     keywords: ["white kitten", "sunglasses"]
   },
   {
@@ -76,7 +76,7 @@ export const products = [
     image: "/images/products/dark-blue-cartoon-curvy-cat-on-sunset-background.png",
     name: "Dark Blue Cartoon Curvy Cat on Sunset Background",
     rating: { stars: 4.5, count: 0 },
-    priceCents: 0,
+    priceCents: 5,
     keywords: ["dark blue cat", "sunset"]
   }
 ];
