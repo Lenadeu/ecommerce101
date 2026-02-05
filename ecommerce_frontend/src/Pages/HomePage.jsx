@@ -1,16 +1,24 @@
 import axios from 'axios';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Header } from '../components/Header';
 import './HomePage.css';
-import { products } from '../../starting-code/data/products';
 
 export function HomePage() {
 
-    //fetch data from the backend, then response is here, the function from then run 
-    //fetch is async 
-    axios.get('http://localhost:3000/api/products')
-        .then((response) => {
-            console.log(response.data);
+    //useState - gives array with 2 values - a valiable and a function to update this value 
+    const [products, setProducts ] = useState([]); //starting value is empty array 
+
+    //useEffect let us control when the code run. default - every time the component is created 
+    //or updated 
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/products')
+            .then((response) => {
+                setProducts(response.data);
             });
+    }, []); // [] - dependency array, empty means the code will run once once when the component is
+    //created 
+    
     return (
         <>
             <title> Ecommerce project </title>
