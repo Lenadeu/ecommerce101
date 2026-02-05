@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Header } from '../components/Header';
+import { formatMoney} from '../utils/money';
 import './HomePage.css';
 
 export function HomePage({ cart }) {
@@ -9,8 +10,6 @@ export function HomePage({ cart }) {
     //useState - gives array with 2 values - a valiable and a function to update this value 
     //save products 
     const [products, setProducts ] = useState([]); //starting value is empty array 
-
-
 
     //useEffect let us control when the code run. default - every time the component is created 
     //or updated 
@@ -58,7 +57,7 @@ export function HomePage({ cart }) {
                             </div>
 
                             <div className="product-price">
-                                €{(product.priceCents/100)}
+                                {formatMoney(product.priceCents)}
                             </div>
 
                             <div className="product-quantity-container">

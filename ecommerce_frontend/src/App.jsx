@@ -15,8 +15,9 @@ function App() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    //get number of items in cart 
-    axios.get('/api/cart-items')
+    //get number of items in cart together with products.
+    //?something is a query parameter 
+    axios.get('/api/cart-items?expand=product')
       .then((response) => {
         setCart(response.data);
       });
