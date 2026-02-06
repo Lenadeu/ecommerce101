@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+
 import { formatMoney } from '../utils/money';
 
 import './checkout-header.css';
@@ -5,6 +8,16 @@ import './checkout-header.css';
 import './CheckoutPage.css';
 
 export function CheckoutPage({ cart }) {
+
+    const [deliveryOptions, setDeliveryOptions] = useState([]);
+
+    useEffect(() => {
+        axios.get('/api/delivery-options')
+        .then((response) => {
+            setDeliveryOptions(response.data);
+        });
+    }, []);
+
     return (
         <>
             <title> Checkout </title>
@@ -37,6 +50,7 @@ export function CheckoutPage({ cart }) {
                     <div className="order-summary">
 
                         {cart.map((cartItem) => {
+
                         return(
                             // key prop 
                             <div key={cartItem.productId} className="cart-item-container">
@@ -50,7 +64,7 @@ export function CheckoutPage({ cart }) {
 
                                 <div className="cart-item-details">
                                     <div className="product-name">
-                                        {cart.product.name}
+                                        {cartItem.product.name}
                                     </div>
                                     <div className="product-price">
                                         {formatMoney(cartItem.product.priceCents)}
