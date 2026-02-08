@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Header } from '../components/Header';
-import { formatMoney} from '../utils/money';
+import { Header } from '../../components/Header';
+import { formatMoney} from '../../utils/money';
 import './HomePage.css';
 
 export function HomePage({ cart }) {
