@@ -21,10 +21,12 @@ export function DeliveryOption({ cartItem, deliveryOptions, loadCart }) {
                 }
 
                 const updateDeliveryOption = async () => {
-
-                    await axios.put(`api/cart-items/${cartItem.productId}`,{
-                        deliveryOptionId: deliveryOption.id
-                    });
+                    //put = update 
+                    await axios.put(`api/cart-items/${cartItem.productId}`,
+                        {
+                            deliveryOptionId: deliveryOption.id
+                        }
+                    );
                     await loadCart();
                 };
 
@@ -37,6 +39,7 @@ export function DeliveryOption({ cartItem, deliveryOptions, loadCart }) {
                     >
                         <input type="radio"
                             checked={deliveryOption.id === cartItem.deliveryOptionId}
+                            onChange={()=>{}}
                             className="delivery-option-input"
                             name={`delivery-option-${cartItem.productId}`} />
                         <div>
