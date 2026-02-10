@@ -14,18 +14,18 @@ function App() {
   //save cart
   const [cart, setCart] = useState([]);
 
+  const loadCart = async () => {
+
+    //get number of items in cart together with products.
+    //?something is a query parameter 
+    const response = await axios.get('/api/cart-items?expand=product');
+    setCart(response.data);
+
+  };
+
   useEffect(() => {
 
-    const fetchAppData = async () => {
-
-      //get number of items in cart together with products.
-      //?something is a query parameter 
-      const response = await axios.get('/api/cart-items?expand=product');
-      setCart(response.data);
-    
-    };
-
-    fetchAppData();
+    loadCart();
 
   }, []) //run once 
 
@@ -36,9 +36,9 @@ function App() {
       {/* path - at the url, element - the component to display -  */}
       {/* index means "/", main page */}
       {/* pass cart into HomePage and into CheckoutPage via prop */}
-      <Route index element={<HomePage cart = {cart} />} />
-      <Route path="checkout" element={<CheckoutPage cart = {cart} />} />
-      <Route path="orders" element={<OrdersPage cart = {cart} />} />
+      <Route index element={<HomePage cart={cart} loadCart={loadCart} />} />
+      <Route path="checkout" element={<CheckoutPage cart={cart} />} />
+      <Route path="orders" element={<OrdersPage cart={cart} />} />
       <Route path="tracking" element={<TrackingPage />} />
 
     </Routes>
