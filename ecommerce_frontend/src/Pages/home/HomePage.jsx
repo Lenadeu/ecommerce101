@@ -5,7 +5,7 @@ import { Header } from '../../components/Header';
 import { ProductsGrid } from './ProductsGrid';
 import './HomePage.css';
 
-export function HomePage({ cart }) {
+export function HomePage({ cart, loadCart }) {
 
     //useState - gives array with 2 values - a valiable and a function to update this value 
     //save products 
@@ -35,7 +35,7 @@ export function HomePage({ cart }) {
 
             <div className="home-page">
 
-                <ProductsGrid products={products} />
+                <ProductsGrid products={products} loadCart={loadCart}/>
 
             </div>
 
