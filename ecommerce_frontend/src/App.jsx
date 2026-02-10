@@ -37,7 +37,7 @@ function App() {
       {/* index means "/", main page */}
       {/* pass cart into HomePage and into CheckoutPage via prop */}
       <Route index element={<HomePage cart={cart} loadCart={loadCart} />} />
-      <Route path="checkout" element={<CheckoutPage cart={cart} />} />
+      <Route path="checkout" element={<CheckoutPage cart={cart} loadCart={loadCart}/>} />
       <Route path="orders" element={<OrdersPage cart={cart} />} />
       <Route path="tracking" element={<TrackingPage />} />
 
