@@ -9,10 +9,11 @@ import { formatMoney } from '../../utils/money';
 import './OrdersPage.css';
 
 
-export function OrdersPage({ cart }) {
+export function OrdersPage({ cart, loadCart}) {
 
     const [orders, setOrders] = useState([]);
 
+    
     useEffect(() => {
 
         const fetchOrderData = async () => {
@@ -25,7 +26,7 @@ export function OrdersPage({ cart }) {
         fetchOrderData();
         
     }, []);
-
+    
     return (
 
         <>
@@ -45,7 +46,7 @@ export function OrdersPage({ cart }) {
 
                             <div key={order.id} className="order-container">
 
-                                <div className="order-header">
+                                <div className="order-hheader">
                                     <div className="order-header-left-section">
                                         <div className="order-date">
                                             <div className="order-header-label">Order Placed:</div>
@@ -67,6 +68,16 @@ export function OrdersPage({ cart }) {
 
                                     {order.products.map((orderProduct) => {
 
+                                        const addToCart = async () => {
+
+                                            await axios.post('/api/cart-items', {
+                                                productId: orderProduct.productId,
+                                                quantity: 1 
+                                            }
+                                            );
+                                            await loadCart();
+                                        };
+                                        
                                         return (
                                             <Fragment key={orderProduct.product.id}>
 
@@ -84,9 +95,12 @@ export function OrdersPage({ cart }) {
                                                     <div className="product-quantity">
                                                         Quantity: {orderProduct.quantity}
                                                     </div>
-                                                    <button className="buy-again-button button-primary">
+                                                    <button className="buy-again-button button-primary"
+                                                            onClick={(addToCart)}>
+
                                                         <img className="buy-again-icon" src="images/icons/buy-again.png" />
                                                         <span className="buy-again-message">Add to Cart</span>
+
                                                     </button>
                                                 </div>
 
@@ -99,19 +113,14 @@ export function OrdersPage({ cart }) {
                                                 </div>
                                             </Fragment>
                                         );
-
                                     })}
-
                                 </div>
                             </div>
                         );
                     })}
-
                 </div>
             </div>
-
         </>
-
     );
 
 }
