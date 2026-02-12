@@ -5,29 +5,54 @@ import axios from "axios";
 export function CartItemDetails({cartItem, loadCart}) {
 
     const [isUpdatingQuality, setIsUpdatingQuantity] = useState(false);
+    const [quantity, setQuantity] = useState(cartItem.quantity);
 
     const deleteCartItem = async () => {
 
         await axios.delete(`/api/cart-items/${cartItem.productId}`);
 
         await loadCart();
-
         
     }
 
-    const updateQuantity =  () => {
+    const updateQuantityInput = (event) => {
 
-    //switch between true and false for isUpdatingQuality 
+        setQuantity(event.target.value);
+
+    };
+
+    const handleQuantityKeyDown = (event) => {
+
+        const keyPressed = event.key;
+
+        if (keyPressed === 'Enter') {
+            updateQuantity();
+        } else if (keyPressed === 'Escape') {
+
+            setQuantity(cartItem.quantity);
+            setIsUpdatingQuantity(false);
+        }   
+    };
+
+    const updateQuantity = async () => {
+
+        //switch between true and false for isUpdatingQuality 
 
         if (isUpdatingQuality) {
+
+            await axios.put(`api/cart-items/${cartItem.productId}`, {
+                quantity: Number(quantity),
+
+            });
+
+            await loadCart();
             setIsUpdatingQuantity(false);
+
         }
-        else 
-        {
+        else {
             setIsUpdatingQuantity(true);
         }
-
-    }
+    };
 
     return (
         <>
@@ -45,10 +70,11 @@ export function CartItemDetails({cartItem, loadCart}) {
                 <div className="product-quantity">
                     <span>
                         {/* Quantity: <span className="quantity-label">{cartItem.quantity}</span> **/}
-                        Quantity: <input type="text" className = "quantity-textbox" />
-                        <span className="quantity-label">{cartItem.quantity}</span>
                         Quantity: {isUpdatingQuality 
-                            ? <input type="text" className="quantity-textbox" />
+                            ? <input type="text" className="quantity-textbox" 
+                                    value={quantity} onChange={updateQuantityInput}
+                                    onKeyDown={handleQuantityKeyDown}
+                            />
                             : <span className="quantity-label">{cartItem.quantity}</span>
                         }
                     </span>
