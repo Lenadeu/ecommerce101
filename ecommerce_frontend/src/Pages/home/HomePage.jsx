@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router';
 import { Header } from '../../components/Header';
 import { ProductsGrid } from './ProductsGrid';
 import './HomePage.css';
@@ -11,19 +12,25 @@ export function HomePage({ cart, loadCart }) {
     //save products 
     const [products, setProducts] = useState([]); //starting value is empty array 
 
+    const [searchParams] = useSearchParams();
+
+    const search = searchParams.get('search');
+
     //useEffect let us control when the code run. default - every time the component is created 
     //or updated 
     useEffect(() => {
         //if we use await it must be inside async function 
         const getHomeData = async () => {
             //await is waiting to code to finish
-            const response = await axios.get('/api/products');
+            const urlPath = search? `/api/products?search=${search}` : '/api/products';
+            const response = await axios.get(urlPath);
+
             setProducts(response.data);
         };
         //we must then run the function 
         getHomeData();
 
-    }, []); // [] - dependency array, empty means the code will run once once when the component is
+    }, [search]); // [] - dependency array, empty means the code will run once once when the component is
     //created 
 
     return (
