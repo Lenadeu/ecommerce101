@@ -31,7 +31,7 @@ export function HomePage({ cart, loadCart }) {
         getHomeData();
 
     }, [search]); // [] - dependency array, empty means the code will run once once when the component is
-    //created 
+    //created, [search] - runs when search is updated 
 
     return (
         <>
