@@ -6,7 +6,8 @@ export function OrderDetailsGrid({ order }) {
 
     return (
         <div className="order-details-grid">
-
+            
+            {/* looping through products within the order */}
             {order.products.map((orderProduct) => {
 
                 return (
@@ -21,7 +22,7 @@ export function OrderDetailsGrid({ order }) {
                                 {orderProduct.product.name}
                             </div>
                             <div className="product-delivery-date">
-                                Arriving on: {dayjs(orderProduct.esmatedDeliveryTimesMs).format('MMMM D')}
+                                Arriving on: {dayjs(orderProduct.estimatedDeliveryTimeMs).format('MMMM D')}
                             </div>
                             <div className="product-quantity">
                                 Quantity: {orderProduct.quantity}
@@ -35,7 +36,7 @@ export function OrderDetailsGrid({ order }) {
                         </div>
 
                         <div className="product-actions">
-                            <a href="/tracking">
+                            <a href={`/tracking/${order.id}/${orderProduct.productId}`}>
                                 <button className="track-package-button button-secondary">
                                     Track package
                                 </button>
