@@ -1,6 +1,23 @@
 import { formatMoney } from "../../utils/money";
+import { useNavigate } from "react-router";
+import  axios  from "axios";
 
-export function PaymentSummary({paymentSummary}) {
+
+export function PaymentSummary({paymentSummary, loadCart}) {
+
+    //navigate to another page in the app 
+    const navigate = useNavigate();
+
+    const createOrder = async () => {
+
+        await axios.post('/api/orders');
+
+        //reload the card 
+        await loadCart();
+
+        navigate('/orders');
+
+    };
 
     return (
 
@@ -48,7 +65,8 @@ export function PaymentSummary({paymentSummary}) {
                         </div>
                     </div>
 
-                    <button className="place-order-button button-primary">
+                    <button className="place-order-button button-primary"
+                    onClick={createOrder}>
                         Place your order
                     </button>
                 </>
