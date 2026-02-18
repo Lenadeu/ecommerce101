@@ -10,7 +10,7 @@ import './OrdersPage.css';
 import { OrdersGrid } from './OrdersGrid';
 
 
-export function OrdersPage({ cart }) {
+export function OrdersPage({ cart,  loadCart }) {
 
     const [orders, setOrders] = useState([]);
 
@@ -39,7 +39,7 @@ export function OrdersPage({ cart }) {
 
                 <div className="page-title">Your Orders</div>
 
-                <OrdersGrid orders={orders} />
+                <OrdersGrid orders={orders} loadCart={loadCart} />
 
             </div>
         </>
