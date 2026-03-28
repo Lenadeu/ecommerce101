@@ -10,11 +10,13 @@ export function PaymentSummary({paymentSummary, loadCart}) {
 
     const createOrder = async () => {
 
+        //create new order 
         await axios.post('/api/orders');
 
         //reload the card 
         await loadCart();
 
+        //not async 
         navigate('/orders');
 
     };
